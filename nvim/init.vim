@@ -1,5 +1,6 @@
 " basic options
-set tabstop=2 softtabstop=2
+set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
@@ -12,7 +13,6 @@ set updatetime=50
 set shortmess+=c
 set undofile
 set undodir=~/.config/nvim/undo
-set incsearch
 set hlsearch
 set backspace
 set confirm
@@ -24,10 +24,10 @@ set noerrorbells
 
 " row/column
 set cursorline
-set colorcolumn=81
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 " colors
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_invert_selection='false'
 set background=dark
 syntax on
 colorscheme gruvbox
@@ -54,15 +54,21 @@ autocmd FileChangedShellPost *
 " keybinds
 let mapleader=' '
 
+" basic movement
+nnoremap j gj
+nnoremap k gk
+nnoremap $ g$
+nnoremap 0 g0
+
 " write
-nnoremap <leader>w :w<CR>
+nnoremap <C-s> :w<CR>
 
 " wincmd
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>q :wincmd q<CR>
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
+nnoremap <C-q> :wincmd q<CR>
 
 " comments
 function ToggleComment()
@@ -107,6 +113,10 @@ autocmd FileType markdown nnoremap <leader>p :Glow<CR>
 " lsp
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+" formatter
+nnoremap <silent> <leader>f :Format<CR>
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 " lua
 " (do this at the end, otherwise lsp stuff doesn't work)

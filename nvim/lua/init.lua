@@ -1,3 +1,5 @@
-require('plugins')
-require('ts')
-require('lsp')
+require("plugins")
+require("ts")
+require("lsp")
+require("stl")
+require("fmt")
