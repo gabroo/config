@@ -27,7 +27,10 @@ return require("packer").startup(
     -- nvim-tree
     use {
       "kyazdani42/nvim-tree.lua",
-      requires = "kyazdani42/nvim-web-devicons"
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require "nvim-tree".setup {}
+      end
     }
 
     -- lualine
@@ -42,7 +45,7 @@ return require("packer").startup(
     -- Neorg
     use {
       "vhyrro/neorg",
-      config = require('norg'),
+      config = require("norg"),
       requires = "nvim-lua/plenary.nvim"
     }
     -- Treesitter
