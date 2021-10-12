@@ -34,6 +34,14 @@ require("formatter").setup {
         }
       end
     },
+    proto = {
+      function()
+        return {
+          exe = "buildifier",
+          stdin = true
+        }
+      end
+    },
     python = {
       function()
         return {

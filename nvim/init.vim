@@ -1,21 +1,24 @@
 " basic options
 set tabstop=2
-set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
+set autoindent
 set nu
 set relativenumber
 set ignorecase
 set smartcase
 set cmdheight=2
 set updatetime=50
-set shortmess+=c
+set shortmess+=cI
 set undofile
 set undodir=~/.config/nvim/undo
 set hlsearch
 set backspace
 set confirm
+
+" language specific
+autocmd FileType bzl setlocal tabstop=4 shiftwidth=4
 
 " disable
 set noswapfile
@@ -86,7 +89,6 @@ endfunction
 nmap <C-c> :call ToggleComment()<CR>
 vmap <C-c> gcgv
 imap <C-c> .<C-o>:call ToggleComment()<CR><BS>
-
 
 " fzf
 nnoremap <C-p> :FZF<CR>

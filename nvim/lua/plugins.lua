@@ -68,5 +68,17 @@ return require("packer").startup(
 
     -- formatter
     use "mhartington/formatter.nvim"
+
+    -- polyglot ?
+    use {
+      "sheerun/vim-polyglot" ,
+      setup = function()
+         vim.g.polyglot_disabled = {'git', 'gitignore'}
+      end
+    }
+
+    if packer_bootstrap then
+      require('packer').sync()
+    end
   end
 )
