@@ -25,9 +25,6 @@ set noswapfile
 set nobackup
 set noerrorbells
 
-" row/column
-set cursorline
-
 " colors
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_invert_selection='false'
@@ -35,6 +32,13 @@ set background=dark
 syntax on
 colorscheme gruvbox
 set termguicolors
+
+" row/column
+set cursorline
+set textwidth=80
+set wrap
+set showbreak=+++
+" set fo+=tc
 
 " python
 let g:python_host_prog='/usr/local/Caskroom/miniconda/base/envs/py2/bin/python'
@@ -118,7 +122,18 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " formatter
 nnoremap <silent> <leader>f :Format<CR>
+
+" python indents
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+
+" Bazel GOPACKAGESDRIVER (a bit hacky)
+let driverfile = globpath(getcwd(), '*/gopackagesdriver.sh')
+if !empty(driverfile) && !empty(globpath(getcwd(), 'WORKSPACE*'))
+  let $GOPACKAGESDRIVER = driverfile
+endif
+
+" symbols outline
+nnoremap <C-z> :SymbolsOutline<CR>
 
 " lua
 " (do this at the end, otherwise lsp stuff doesn't work)

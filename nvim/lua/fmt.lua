@@ -8,6 +8,29 @@ require("formatter").setup {
         }
       end
     },
+    go = {
+      function()
+        return {
+          exe = "gofmt",
+          args = {
+            "-s"
+          },
+          stdin = true
+        }
+      end,
+      function()
+        return {
+          exe = "golines",
+          stdin = true
+        }
+      end,
+      function()
+        return {
+          exe = "goremovelines",
+          stdin = true
+        }
+      end
+    },
     javascript = {
       function()
         return {
@@ -37,7 +60,7 @@ require("formatter").setup {
     proto = {
       function()
         return {
-          exe = "buildifier",
+          exe = "clang-format",
           stdin = true
         }
       end

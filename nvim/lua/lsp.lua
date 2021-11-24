@@ -32,18 +32,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<leader>L", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = {"pyright"}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150
-    }
-  }
-end
-
 nvim_lsp.ccls.setup {
   on_attach = on_attach,
   init_options = {
@@ -53,29 +41,25 @@ nvim_lsp.ccls.setup {
   }
 }
 
-local cmp = require("cmp")
-cmp.setup {
-  mapping = {
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm(
-      {
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true
-      }
-    )
-  },
-  sorting = {
-    priority_weight = 1
-  },
-  -- You should specify your *installed* sources.
-  sources = {
-    {name = "nvim_lsp"},
-    {name = "buffer"},
-    {name = "neorg"}
+nvim_lsp.gopls.setup {
+  on_attach = on_attach,
+  cmd = {"gopls"},
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true
+      },
+      staticcheck = true
+    }
   }
 }
+
+nvim_lsp.pyright.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150
+  }
+}
+
+require("cmpl")

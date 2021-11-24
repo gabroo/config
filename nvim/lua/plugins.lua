@@ -62,20 +62,20 @@ return require("packer").startup(
       "hrsh7th/nvim-cmp",
       requires = {
         "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-nvim-lsp"
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-path",
+        "ray-x/cmp-treesitter"
       }
     }
 
     -- formatter
     use "mhartington/formatter.nvim"
 
-    -- polyglot ?
-    use {
-      "sheerun/vim-polyglot" ,
-      setup = function()
-         vim.g.polyglot_disabled = {'git', 'gitignore'}
-      end
-    }
+    -- Bazel
+    use "bazelbuild/vim-ft-bzl"
+
+    -- symbols outline
+    use "simrat39/symbols-outline.nvim"
 
     if packer_bootstrap then
       require('packer').sync()
