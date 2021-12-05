@@ -46,4 +46,10 @@ yarn global add typescript
 
 ### 3. plug in
 
+bootstrap packer.nvim
+
+```bash
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
+
 open `nvim` and type `:PackerSync`
