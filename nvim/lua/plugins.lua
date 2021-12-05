@@ -39,15 +39,16 @@ return require("packer").startup(
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
 
-    -- markdown preview
-    use "ellisonleao/glow.nvim"
+--     -- markdown preview
+--     use "ellisonleao/glow.nvim"
 
-    -- Neorg
-    use {
-      "vhyrro/neorg",
-      config = require("norg"),
-      requires = "nvim-lua/plenary.nvim"
-    }
+    -- -- Neorg
+    -- use {
+    --   "vhyrro/neorg",
+    --   config = require("norg"),
+    --   requires = "nvim-lua/plenary.nvim"
+    -- }
+    
     -- Treesitter
     use {
       "nvim-treesitter/nvim-treesitter",
@@ -76,6 +77,18 @@ return require("packer").startup(
 
     -- symbols outline
     use "simrat39/symbols-outline.nvim"
+
+    -- git 
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      },
+      tag = 'release',
+      config = function()
+        require('gitsigns').setup()
+      end
+    }
 
     if packer_bootstrap then
       require('packer').sync()

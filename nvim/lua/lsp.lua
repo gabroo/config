@@ -41,6 +41,10 @@ nvim_lsp.ccls.setup {
   }
 }
 
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach
+}
+
 nvim_lsp.gopls.setup {
   on_attach = on_attach,
   cmd = {"gopls"},
