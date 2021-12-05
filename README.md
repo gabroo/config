@@ -11,7 +11,7 @@ brew install neovim
 ```bash
 git clone https://github.com/gabroo/nvim.git ~/.config/nvim
 mkdir ~/.config/nvim/undo
-brew install fzf glow tree-sitter tmux
+brew install tmux rg fzf tree-sitter glow
 ```
 
 create a tmux config file
