@@ -1,9 +1,6 @@
 # editor
 set -x EDITOR nvim
 
-# google-cloud-sdk homebrew cask
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
-
 # fzf
 set -x FZF_DEFAULT_COMMAND 'rg --files'
 set -x FZF_DEFAULT_OPTS '--bind change:first'
@@ -14,9 +11,13 @@ set -x GOPATH (go env GOPATH)
 set -x PATH $PATH $GOPATH/bin
 
 # aliases
-alias l ll
+alias l 'll'
 alias la 'ls -lA'
 alias gs 'git status'
+alias nvim '/usr/local/Cellar/neovim/0.5.1_1/bin/nvim'
+alias cloud 'rw -rt cloudtop'
+
+# vim
 function vim
   if test (count $argv) -eq 0
     nvim
@@ -27,5 +28,5 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+eval /Users/sajeevs/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
